@@ -10,9 +10,10 @@ Welcome to **Farmer_Management_System**, a comprehensive **Database Management S
 - 🌱 **Database-Driven Management**: Organize and manage farm resources, activities, and stakeholder interactions in a relational database (MySQL).
 - 🌍 **Web Interface**: Access the application through a modern and intuitive **Flask** web interface.
 - 🔒 **User Authentication**: Secure login and account management using **Flask-Login** to protect user data and access.
-- 📊 **Resource and Activity Tracking**: Efficiently track crops, equipment, and tasks through a well-structured database schema.
 - 📂 **Database Integration**: Uses SQL queries and relationships to connect farm data, manage transactions, and generate reports.
 - 🧑‍🤝‍🧑 **Stakeholder Interaction**: Record and manage communications and transactions with suppliers, buyers, and other stakeholders.
+- ⚙️ **Triggers, Cursors, and Normalization**: Implementations of **triggers** for automatic actions, **cursors** for handling large data sets, and **normalization** to ensure a clean and efficient database structure.
+- 📝 **Data Validation**: Ensure data integrity with built-in validation for **Age**, **Phone Number**, and **Aadhaar Number**.
 
 ---
 
@@ -52,7 +53,31 @@ Follow these steps to set up **Farmer System** on your local machine:
     ```bash
     python main.py
     ```
+---
 
+### **Key DBMS Features**:
+
+1. **Normalization**:
+   - The database schema is normalized to **3rd Normal Form (3NF)** to eliminate redundancy and ensure data integrity. This helps in reducing data duplication and organizing data into logical tables.
+   
+   - For example:
+     - **Farmers** table stores only farmer-related information, while **Resources** stores farm resources, and activities are tracked in the **Activities** table. This separation ensures clean data structure and avoids redundant storage.
+     
+2. **Cursors**:
+   - Cursors are implemented to handle large datasets efficiently. For example, when generating activity reports or processing large amounts of farm data, cursors allow for processing data row-by-row, thus optimizing memory usage.
+
+3. **Triggers**:
+   - **Triggers** are used to automatically perform actions in the database based on specific events. For instance:
+     - **Trigger for Updating Stock**: When a resource is used (e.g., a crop is harvested), a trigger automatically updates the stock in the **Resources** table.
+     - **Trigger for Logging Transactions**: When a sale or purchase is made, a trigger records the transaction in the **Transactions** table, ensuring real-time updates without manual intervention.
+
+4. **Validation for Data Integrity**:
+   - **Phone Number Validation**: Ensures that the phone number entered by the user follows the correct format (e.g., 10 digits).
+   - **Aadhaar Number Validation**: Ensures that the Aadhaar number follows a valid 12-digit numeric format.
+   - **Age Validation**: Ensures that the age of a user is a valid integer and falls within the acceptable range (e.g., 18 to 100 years).
+
+   These validations are enforced through both **Flask forms** (for input validation) and database-level constraints.
+   
 ---
 
 ## ⚙️ **Database Structure** ⚙️
